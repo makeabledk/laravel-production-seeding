@@ -1,7 +1,7 @@
 
 # Laravel Production Seeding
 
-This package provides a handy way to create work with production seeding in Laravel.
+This package provides a handy way to work with production seeding in Laravel.
 
 Consider you have database tables you want to keep in-sync across environments. 
 For instance some configuration table where you need to ensure a fixed number of rows, but not necessarily overwrite the values. 
@@ -21,7 +21,7 @@ Makeable is web- and mobile app agency located in Aarhus, Denmark.
 You can install this package via composer:
 
 ``` bash
-composer require makeable/laravel-production-seeding
+composer require makeabledk/laravel-production-seeding
 ```
 
 ## Usage
@@ -57,7 +57,7 @@ class ConfigSeeder extends Seeder
     
     public function run()
     {
-        $this->apply($this->rows, ConfigModel::class, 'key');
+        $this->apply($this->rows, Config::class, 'key');
     }
 }
 
