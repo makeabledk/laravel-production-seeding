@@ -8,7 +8,6 @@ use Makeable\ProductionSeeding\Tests\TestSeeder;
 
 class SyncSeedingTest extends TestCase
 {
-
     public function test_it_seeds_through_artisan()
     {
         $this->seed(TestSeeder::class);
@@ -57,5 +56,4 @@ class SyncSeedingTest extends TestCase
 
         $this->assertEquals($original['name'], TestModel::where('slug', $original['slug'])->first()->name);
     }
-
 }
