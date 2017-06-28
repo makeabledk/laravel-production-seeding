@@ -1,6 +1,10 @@
 
 # Laravel Production Seeding
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/makeabledk/laravel-production-seeding.svg?style=flat-square)](https://packagist.org/packages/makeabledk/laravel-production-seeding)
+[![Build Status](https://img.shields.io/travis/makeabledk/laravel-production-seeding/master.svg?style=flat-square)](https://travis-ci.org/makeabledk/laravel-production-seeding)
+[![StyleCI](https://styleci.io/repos/95552885/shield?branch=master)](https://styleci.io/repos/95552885)
+
 This package provides a handy way to work with production seeding in Laravel.
 
 Consider you have database tables you want to keep in-sync across environments. 
