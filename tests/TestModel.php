@@ -2,10 +2,8 @@
 
 namespace Makeable\ProductionSeeding\Tests;
 
-
 class TestModel extends \Illuminate\Database\Eloquent\Model
 {
-
     /**
      * @var string
      */
@@ -20,5 +18,4 @@ class TestModel extends \Illuminate\Database\Eloquent\Model
      * @var bool
      */
     public $timestamps = false;
-
 }

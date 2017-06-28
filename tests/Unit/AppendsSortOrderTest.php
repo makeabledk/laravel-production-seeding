@@ -11,7 +11,6 @@ use Makeable\ProductionSeeding\Tests\TestSeeder;
 
 class AppendsSortOrderTest extends TestCase
 {
-
     public function test_it_seeds_rows_and_appends_sort_order()
     {
         $this->seedInline(new class extends TestSeeder {
@@ -52,5 +51,4 @@ class AppendsSortOrderTest extends TestCase
 
         $this->seedInline($seeder);
     }
-
 }
