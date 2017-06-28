@@ -2,16 +2,12 @@
 
 namespace Makeable\ProductionSeeding\Tests;
 
+use DB;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use DB;
 
 class TestCase extends BaseTestCase
 {
-
-    /**
-     *
-     */
     public function setUp()
     {
         parent::setUp();
@@ -55,6 +51,6 @@ class TestCase extends BaseTestCase
      */
     protected function seedInline($class)
     {
-        (is_object($class)? $class : new $class)->run();
+        (is_object($class) ? $class : new $class)->run();
     }
 }

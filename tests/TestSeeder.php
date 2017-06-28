@@ -2,13 +2,11 @@
 
 namespace Makeable\ProductionSeeding\Tests;
 
-
 use Illuminate\Database\Seeder;
 use Makeable\ProductionSeeding\SyncStrategy;
 
 class TestSeeder extends Seeder
 {
-
     use SyncStrategy;
 
     /**
@@ -29,8 +27,6 @@ class TestSeeder extends Seeder
         ],
     ];
 
-    /**
-     */
     public function run()
     {
         $this->apply($this->rows, TestModel::class, 'slug');
