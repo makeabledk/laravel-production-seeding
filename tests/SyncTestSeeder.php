@@ -5,7 +5,7 @@ namespace Makeable\ProductionSeeding\Tests;
 use Illuminate\Database\Seeder;
 use Makeable\ProductionSeeding\SyncStrategy;
 
-class TestSeeder extends Seeder
+class SyncTestSeeder extends Seeder
 {
     use SyncStrategy;
 

@@ -7,22 +7,22 @@ use Illuminate\Database\Schema\Blueprint;
 use Makeable\ProductionSeeding\AppendsSortOrder;
 use Makeable\ProductionSeeding\Tests\TestCase;
 use Makeable\ProductionSeeding\Tests\TestModel;
-use Makeable\ProductionSeeding\Tests\TestSeeder;
+use Makeable\ProductionSeeding\Tests\SyncTestSeeder;
 
 class AppendsSortOrderTest extends TestCase
 {
     public function test_it_seeds_rows_and_appends_sort_order()
     {
-        $this->seedInline(new class extends TestSeeder {
+        $this->seedInline(new class extends SyncTestSeeder {
             use AppendsSortOrder;
         });
         $this->assertEquals(0, TestModel::first()->order);
-        $this->assertEquals(count((new TestSeeder)->rows), TestModel::count());
+        $this->assertEquals(count((new SyncTestSeeder)->rows), TestModel::count());
     }
 
     public function test_it_deletes_rows_and_regenerates_order()
     {
-        $seeder = new class extends TestSeeder {
+        $seeder = new class extends SyncTestSeeder {
             use AppendsSortOrder;
         };
 
@@ -44,7 +44,7 @@ class AppendsSortOrderTest extends TestCase
             $table->renameColumn('order', 'sortorder');
         });
 
-        $seeder = new class extends TestSeeder {
+        $seeder = new class extends SyncTestSeeder {
             use AppendsSortOrder;
             protected $sortKey = 'sortorder';
         };

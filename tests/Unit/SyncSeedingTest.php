@@ -4,20 +4,20 @@ namespace Makeable\ProductionSeeding\Tests\Unit;
 
 use Makeable\ProductionSeeding\Tests\TestCase;
 use Makeable\ProductionSeeding\Tests\TestModel;
-use Makeable\ProductionSeeding\Tests\TestSeeder;
+use Makeable\ProductionSeeding\Tests\SyncTestSeeder;
 
 class SyncSeedingTest extends TestCase
 {
     public function test_it_seeds_through_artisan()
     {
-        $this->seed(TestSeeder::class);
-        $this->assertEquals(count((new TestSeeder)->rows), TestModel::count());
+        $this->seed(SyncTestSeeder::class);
+        $this->assertEquals(count((new SyncTestSeeder)->rows), TestModel::count());
     }
 
     public function test_it_deletes_rows_but_preserves_ids()
     {
         // Seed original
-        $seeder = new TestSeeder();
+        $seeder = new SyncTestSeeder();
         $this->seedInline($seeder);
 
         // Remove second item and re-seed
@@ -25,7 +25,7 @@ class SyncSeedingTest extends TestCase
         $this->seedInline($seeder);
 
         // Assert one less item
-        $this->assertEquals(count((new TestSeeder)->rows) - 1, TestModel::count());
+        $this->assertEquals(count((new SyncTestSeeder)->rows) - 1, TestModel::count());
 
         $this->assertNotNull(TestModel::find(1));
         $this->assertNull(TestModel::find(2));
@@ -35,7 +35,7 @@ class SyncSeedingTest extends TestCase
     public function test_it_deletes_items_matching_the_compare_key()
     {
         // Seed original
-        $seeder = new TestSeeder();
+        $seeder = new SyncTestSeeder();
         $this->seedInline($seeder);
 
         // Remove second item and re-seed
@@ -47,7 +47,7 @@ class SyncSeedingTest extends TestCase
 
     public function test_it_only_overwrites_the_columns_given()
     {
-        $seeder = new TestSeeder;
+        $seeder = new SyncTestSeeder;
         $original = $seeder->rows[1];
 
         $this->seedInline($seeder);
