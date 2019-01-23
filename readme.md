@@ -132,6 +132,60 @@ You could then re-arrange the array and run the seeder again. Then you could hav
 
 Pretty cool, right?
 
+
+### Appending a configuration table
+
+Using previous sync-strategy, any rows manually added to the database table would be deleted on seeding. 
+
+If this is not the behaviour you wish for, you may instead use `AppendStrategy` which would only append the new rows.
+
+Let's assume our previous `config` table has an existing row:
+
+```
+| id | key                      | value      |
+|----|--------------------------|------------|
+| 1  | github_username          | makeabledk |
+```
+
+Next we setup our `ConfigSeeder` with an `AppendStrategy`:
+
+```php
+class ConfigSeeder extends Seeder
+{
+    use \Makeable\ProductionSeeding\AppendStrategy;
+    
+    public $rows = [
+        [
+            'key' => 'some_service_id',
+            'value' => '123456' 
+        ],
+        [
+            'key' => 'some_service_public_key',
+        ],
+        [
+            'key' => 'some_service_private_key',
+        ],
+    ];
+    
+    public function run()
+    {
+        $this->apply($this->rows, Config::class, 'key');
+    }
+}
+
+```
+
+Now our table would have the existing row plus the 3 new ones:
+```
+| id | key                      | value      |
+|----|--------------------------|------------|
+| 1  | github_username          | makeabledk |
+| 2  | some_service_id          | 123456     |
+| 3  | some_service_public_key  | NULL       |
+| 4  | some_service_private_key | NULL       |
+```
+
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
