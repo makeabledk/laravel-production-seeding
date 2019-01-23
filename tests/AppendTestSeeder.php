@@ -27,8 +27,6 @@ class AppendTestSeeder extends Seeder
         ],
     ];
 
-    /**
-     */
     public function run()
     {
         $this->apply($this->rows, TestModel::class, 'slug');

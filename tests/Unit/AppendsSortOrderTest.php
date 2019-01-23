@@ -5,9 +5,9 @@ namespace Makeable\ProductionSeeding\Tests\Unit;
 use DB;
 use Illuminate\Database\Schema\Blueprint;
 use Makeable\ProductionSeeding\AppendsSortOrder;
+use Makeable\ProductionSeeding\Tests\SyncTestSeeder;
 use Makeable\ProductionSeeding\Tests\TestCase;
 use Makeable\ProductionSeeding\Tests\TestModel;
-use Makeable\ProductionSeeding\Tests\SyncTestSeeder;
 
 class AppendsSortOrderTest extends TestCase
 {

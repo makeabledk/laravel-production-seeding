@@ -2,9 +2,9 @@
 
 namespace Makeable\ProductionSeeding\Tests\Unit;
 
+use Makeable\ProductionSeeding\Tests\AppendTestSeeder;
 use Makeable\ProductionSeeding\Tests\TestCase;
 use Makeable\ProductionSeeding\Tests\TestModel;
-use Makeable\ProductionSeeding\Tests\AppendTestSeeder;
 
 class AppendSeedingTest extends TestCase
 {
@@ -18,7 +18,7 @@ class AppendSeedingTest extends TestCase
     {
         $custom = TestModel::forceCreate([
             'slug' => 'some_other',
-            'name' => 'Some other'
+            'name' => 'Some other',
         ]);
 
         $this->seed(AppendTestSeeder::class);
