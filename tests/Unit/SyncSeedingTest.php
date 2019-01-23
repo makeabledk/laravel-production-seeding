@@ -2,9 +2,9 @@
 
 namespace Makeable\ProductionSeeding\Tests\Unit;
 
+use Makeable\ProductionSeeding\Tests\SyncTestSeeder;
 use Makeable\ProductionSeeding\Tests\TestCase;
 use Makeable\ProductionSeeding\Tests\TestModel;
-use Makeable\ProductionSeeding\Tests\SyncTestSeeder;
 
 class SyncSeedingTest extends TestCase
 {
