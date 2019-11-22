@@ -13,7 +13,7 @@ trait SyncStrategy
      */
     protected function apply($rows, $class, $compareKey = null)
     {
-        list($rows, $class, $compareKey) = $this->normalizeArgs($rows, $class, $compareKey);
+        [$rows, $class, $compareKey] = $this->normalizeArgs($rows, $class, $compareKey);
 
         // Delete existing rows not in new rows list
         $class::whereNotIn($compareKey, $rows->pluck($compareKey))->delete();

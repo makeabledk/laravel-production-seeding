@@ -13,7 +13,7 @@ trait AppendStrategy
      */
     protected function apply($rows, $class, $compareKey = null)
     {
-        list($rows, $class, $compareKey) = $this->normalizeArgs($rows, $class, $compareKey);
+        [$rows, $class, $compareKey] = $this->normalizeArgs($rows, $class, $compareKey);
 
         $this
             // Apply any generic behavior
