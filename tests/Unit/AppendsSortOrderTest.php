@@ -50,5 +50,7 @@ class AppendsSortOrderTest extends TestCase
         };
 
         $this->seedInline($seeder);
+
+        $this->assertEquals(2, TestModel::latest('id')->first()->sortorder);
     }
 }
