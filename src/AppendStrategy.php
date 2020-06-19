@@ -21,10 +21,9 @@ trait AppendStrategy
 
             // Create none-existing rows
             ->each(function ($row) use ($class, $compareKey) {
-                $class::unguard();
-                $model = $class::firstOrNew([$compareKey => $row[$compareKey]]);
-                $model->fill($row)->save();
-                $class::reguard();
+                $class::unguarded(function () use ($class, $compareKey, $row) {
+                    $class::firstOrNew([$compareKey => $row[$compareKey]])->fill($row)->save();
+                });
             });
     }
 }
