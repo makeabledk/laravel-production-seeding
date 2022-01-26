@@ -17,8 +17,7 @@ trait AppendsSortOrder
     }
 
     /**
-     * @param Collection $rows
-     *
+     * @param  Collection  $rows
      * @return Collection
      */
     protected function sort(Collection $rows)

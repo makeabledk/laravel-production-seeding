@@ -9,8 +9,7 @@ trait BaseStrategy
     /**
      * some description.
      *
-     * @param Collection $rows
-     *
+     * @param  Collection  $rows
      * @return mixed
      */
     protected function pipe(Collection $rows)
@@ -25,8 +24,7 @@ trait BaseStrategy
     /**
      * @param $rows
      * @param $class
-     * @param null $compareKey
-     *
+     * @param  null  $compareKey
      * @return array
      */
     protected function normalizeArgs($rows, $class, $compareKey = null)
