@@ -13,7 +13,8 @@ class AppendsSortOrderTest extends TestCase
 {
     public function test_it_seeds_rows_and_appends_sort_order()
     {
-        $this->seedInline(new class extends SyncTestSeeder {
+        $this->seedInline(new class extends SyncTestSeeder
+        {
             use AppendsSortOrder;
         });
         $this->assertEquals(0, TestModel::first()->order);
@@ -22,7 +23,8 @@ class AppendsSortOrderTest extends TestCase
 
     public function test_it_deletes_rows_and_regenerates_order()
     {
-        $seeder = new class extends SyncTestSeeder {
+        $seeder = new class extends SyncTestSeeder
+        {
             use AppendsSortOrder;
         };
 
@@ -44,7 +46,8 @@ class AppendsSortOrderTest extends TestCase
             $table->renameColumn('order', 'sortorder');
         });
 
-        $seeder = new class extends SyncTestSeeder {
+        $seeder = new class extends SyncTestSeeder
+        {
             use AppendsSortOrder;
             protected $sortKey = 'sortorder';
         };

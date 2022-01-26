@@ -9,7 +9,7 @@ trait SyncStrategy
     /**
      * @param $rows
      * @param $class
-     * @param null $compareKey
+     * @param  null  $compareKey
      */
     protected function apply($rows, $class, $compareKey = null)
     {
