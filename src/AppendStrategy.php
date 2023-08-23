@@ -23,7 +23,7 @@ trait AppendStrategy
             ->each(function ($row) use ($query, $compareKey) {
                 $model = get_class($query->getModel());
                 $model::unguarded(function () use ($query, $compareKey, $row) {
-                    $query->firstOrNew([$compareKey => $row[$compareKey]])->fill($row)->save();
+                    (clone $query)->firstOrNew([$compareKey => $row[$compareKey]])->fill($row)->save();
                 });
             });
     }
