@@ -2,6 +2,7 @@
 
 namespace Makeable\ProductionSeeding;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
 trait BaseStrategy
@@ -22,17 +23,20 @@ trait BaseStrategy
     }
 
     /**
-     * @param $rows
-     * @param $class
+     * @param  $rows
+     * @param  $query
      * @param  null  $compareKey
      * @return array
      */
-    protected function normalizeArgs($rows, $class, $compareKey = null)
+    protected function normalizeArgs($rows, $query, $compareKey = null)
     {
+        /** @var $query Builder; */
+        $query = is_string($query) ? $query::query() : $query;
+
         return [
             $rows instanceof Collection ? $rows : collect($rows),
-            $class,
-            $compareKey ?: (new $class())->getKeyName(),
+            $query,
+            $compareKey ?: $query->getModel()->getKeyName(),
         ];
     }
 }
