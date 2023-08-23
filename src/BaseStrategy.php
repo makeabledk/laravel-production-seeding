@@ -2,7 +2,6 @@
 
 namespace Makeable\ProductionSeeding;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
@@ -24,8 +23,8 @@ trait BaseStrategy
     }
 
     /**
-     * @param $rows
-     * @param $query
+     * @param  $rows
+     * @param  $query
      * @param  null  $compareKey
      * @return array
      */

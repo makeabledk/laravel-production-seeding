@@ -47,7 +47,7 @@ class TestCase extends BaseTestCase
     }
 
     /**
-     * @param $class
+     * @param  $class
      */
     protected function seedInline($class)
     {

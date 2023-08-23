@@ -7,8 +7,8 @@ trait SyncStrategy
     use BaseStrategy;
 
     /**
-     * @param $rows
-     * @param $query
+     * @param  $rows
+     * @param  $query
      * @param  null  $compareKey
      */
     protected function apply($rows, $query, $compareKey = null)
