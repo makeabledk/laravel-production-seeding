@@ -8,21 +8,22 @@ trait AppendStrategy
 
     /**
      * @param $rows
-     * @param $class
+     * @param $query
      * @param  null  $compareKey
      */
-    protected function apply($rows, $class, $compareKey = null)
+    protected function apply($rows, $query, $compareKey = null)
     {
-        [$rows, $class, $compareKey] = $this->normalizeArgs($rows, $class, $compareKey);
+        [$rows, $query, $compareKey] = $this->normalizeArgs($rows, $query, $compareKey);
 
         $this
             // Apply any generic behavior
             ->pipe($rows)
 
             // Create none-existing rows
-            ->each(function ($row) use ($class, $compareKey) {
-                $class::unguarded(function () use ($class, $compareKey, $row) {
-                    $class::firstOrNew([$compareKey => $row[$compareKey]])->fill($row)->save();
+            ->each(function ($row) use ($query, $compareKey) {
+                $model = get_class($query->getModel());
+                $model::unguarded(function () use ($query, $compareKey, $row) {
+                    $query->firstOrNew([$compareKey => $row[$compareKey]])->fill($row)->save();
                 });
             });
     }
